@@ -1,7 +1,13 @@
 # React-Slot-Fill
 
+
+*** Not ready for primetime yet ***
+
+
 React-Slot-Fill is a simple implementation of a component rendering pattern that is
 developed to mimic web-component's `<slot name>` API.
+
+## Why?
 
 This pattern was developed to avoid messy props-as-nodes components like this:
 
@@ -32,13 +38,13 @@ This above is a bit of a contrived example because if you only need to insert on
 
 ## How do I use this?
 
-When designing your components, you can use `<Slot>` as a placeholder for whatever you want the implementor to render inside the component.
+When designing your components, you can use `<Fill>` as a placeholder for whatever you want the implementor to render inside the component.
 
 ```Javascript
 const MyCustomComponent = props => (
   <div>
     <p>some internal content not affected by `React-Slot-Fill`</p>
-    <Slot as="name" />
+    <Fill name="name" />
     <p>Some more internal content</p>
   </div>
 );
@@ -46,8 +52,7 @@ const MyCustomComponent = props => (
 
 Where:
 
- * `<Slot>` accepts one prop `as` that is used to match it to a `<Fill>`
-
+ * `<Fill>` accepts one prop `name` that is used to match it to a `<Slot>`
 
 
 Then when you want to use your component you can do the following:
@@ -57,13 +62,18 @@ const MyApp = props => (
  <main>
    <p>some app content</p>
    <MyCustomComponent>
-     <Fill name="as">
-       <p>some content that will be inserted into the associated `<Slot>`</p>
-     </Fill>
+     <Slot as="name">
+       <p>some content that will be inserted into the associated `<Fill>`</p>
+     </Slot>
    </MyCustomComponent>
  </main>
 )
 ```
+
+## Examples:
+
+Please see [/examples/examples.md](/examples/examples.md)
+
 
 ### NOTES:
 
